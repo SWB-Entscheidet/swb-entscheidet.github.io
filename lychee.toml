@@ -6,8 +6,9 @@ max_concurrency = 8
 # Anker (#abschnitt) müssen auf der Seite existieren
 include_fragments = "full"
 # 429 = Rate-Limit: Link existiert, Host bremst nur den Bot aus
+# 503 = Wartung/Überlastung des Ziels: vorübergehend, kein toter Link
 # Zeitüberschreitung fremder Server soll keinen PR rot färben
 accept_timeouts = true
-accept = ["200..=299", "429"]
+accept = ["200..=299", "429", "503"]
 user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36"
 exclude_path = ["node_modules", "lhci-report", ".lighthouseci"]
