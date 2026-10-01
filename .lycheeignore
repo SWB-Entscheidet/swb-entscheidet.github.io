@@ -1,0 +1,3 @@
+# Google Maps blockt Bot-Anfragen (Consent-Redirect, 429); die URLs sind
+# reine Routen-Deeplinks mit Adresse als Parameter und werden nicht geprüft.
+^https://www\.google\.com/maps/

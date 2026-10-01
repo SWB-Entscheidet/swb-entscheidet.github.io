@@ -1,0 +1,88 @@
+name: Qualitätschecks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qualitaet-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pages-setup:
+    name: Pages-Setup (CNAME, .nojekyll)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: CNAME und .nojekyll vorhanden
+        run: |
+          test -f .nojekyll || { echo "::error file=.nojekyll::.nojekyll fehlt"; exit 1; }
+          test "$(tr -d '[:space:]' < CNAME)" = "schwalbach-entscheidet.de" \
+            || { echo "::error file=CNAME::CNAME fehlt oder zeigt nicht auf schwalbach-entscheidet.de"; exit 1; }
+
+  links:
+    name: Linkcheck (lychee)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Links prüfen
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
+        with:
+          args: --config lychee.toml --root-dir "${{ github.workspace }}" --no-progress './**/*.html'
+          lycheeVersion: v0.24.2
+          fail: true
+          jobSummary: true
+
+  html:
+    name: HTML-Validierung (html-validate)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run check:html
+
+  a11y:
+    name: Barrierefreiheit (axe, WCAG 2.1 AA)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Seite lokal ausliefern
+        run: |
+          python3 -m http.server 8080 --bind 127.0.0.1 >/dev/null 2>&1 &
+          for i in $(seq 1 20); do curl -fs http://127.0.0.1:8080/ >/dev/null && exit 0; sleep 0.5; done
+          echo "::error::Static-Server nicht erreichbar"; exit 1
+      - run: npm run check:a11y
+
+  lighthouse:
+    name: Lighthouse CI
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      # Paket ist @lhci/cli (lokal installiert) – nie "npx lhci" (Squatter-Paket)
+      - run: npm run check:lighthouse
+      - name: Report als Artifact
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: lighthouse-report
+          path: lhci-report/
+          if-no-files-found: warn
