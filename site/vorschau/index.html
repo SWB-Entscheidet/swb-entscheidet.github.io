@@ -800,6 +800,10 @@
             margin-bottom: 8px
         }
 
+        .dropoff-section {
+            margin-top: 64px
+        }
+
         .formoption p {
             font-size: .94rem
         }
@@ -1092,6 +1096,21 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                 <h2>Unterschriftenformulare herunterladen</h2>
                 <p>Es gibt zwei Druckfassungen mit derselben Frage und Begründung: ein doppelseitiges Formular mit 15
                     Unterschriftenfeldern und ein einseitiges Formular mit zwei Unterschriftenfeldern.</p>
+                <div role="group" aria-label="Druckfassungen des Bürgerbegehrens" class="formoptions">
+                    <article class="formoption">
+                        <h3>Doppelseitiges Formular</h3>
+                        <p>Vorderseite mit Frage, Begründung, Kostenschätzung und Vertrauenspersonen. Rückseite mit 15
+                            Unterschriftenfeldern, zum Ausfüllen quer drehen.</p><button class="btn" id="open-double"
+                            type="button">PDF herunterladen · 15 Unterschriften</button>
+                    </article>
+                    <article class="formoption">
+                        <h3>Einseitiges Formular</h3>
+                        <p>Alle Angaben und zwei Unterschriftenfelder auf einem DIN-A4-Blatt im Hochformat. Für einzelne
+                            Unterschriften oder kleine Haushalte.</p><a class="btn" download=""
+                            href="Unterschriftenformular_einseitig_2_Unterschriften.pdf">PDF herunterladen · 2
+                            Unterschriften</a>
+                    </article>
+                </div>
                 <div class="steps">
                     <div class="step">
                         <h3>Formular ausdrucken</h3>
@@ -1166,21 +1185,6 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                     Original verwenden. Bei der doppelseitigen Fassung müssen Vorder- und Rückseite auf demselben Blatt
                     Papier stehen. Die einseitige Fassung enthält alle Pflichtangaben und beide Unterschriftsfelder auf
                     einer Seite.</div>
-                <div role="group" aria-label="Druckfassungen des Bürgerbegehrens" class="formoptions">
-                    <article class="formoption">
-                        <h3>Doppelseitiges Formular</h3>
-                        <p>Vorderseite mit Frage, Begründung, Kostenschätzung und Vertrauenspersonen. Rückseite mit 15
-                            Unterschriftenfeldern, zum Ausfüllen quer drehen.</p><button class="btn" id="open-double"
-                            type="button">PDF herunterladen · 15 Unterschriften</button>
-                    </article>
-                    <article class="formoption">
-                        <h3>Einseitiges Formular</h3>
-                        <p>Alle Angaben und zwei Unterschriftenfelder auf einem DIN-A4-Blatt im Hochformat. Für einzelne
-                            Unterschriften oder kleine Haushalte.</p><a class="btn" download=""
-                            href="Unterschriftenformular_einseitig_2_Unterschriften_final.pdf">PDF herunterladen · 2
-                            Unterschriften</a>
-                    </article>
-                </div>
                 <dialog aria-labelledby="print-title" class="dialog" id="double-print-dialog">
                     <h2 id="print-title">Bitte unbedingt doppelseitig drucken</h2>
                     <p>Die Vorderseite mit Frage, Begründung, Kostenschätzung und Vertrauenspersonen sowie die Rückseite
