@@ -1,4 +1,7 @@
-name: Qualitätschecks
+name: Qualitätschecks und Deploy
+
+# Ausgeliefert wird nur das Verzeichnis site/. Deploy nur von main und nur,
+# wenn alle Qualitätschecks grün sind.
 
 on:
   pull_request:
@@ -11,22 +14,23 @@ permissions:
 
 concurrency:
   group: qualitaet-${{ github.ref }}
-  cancel-in-progress: true
+  # Auf main keinen laufenden Deploy abbrechen
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
   pages-setup:
-    name: Pages-Setup (CNAME, .nojekyll)
+    name: Pages-Setup (CNAME)
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: CNAME und .nojekyll vorhanden
+      - name: site/CNAME zeigt auf die Custom Domain
         run: |
-          test -f .nojekyll || { echo "::error file=.nojekyll::.nojekyll fehlt"; exit 1; }
-          test "$(tr -d '[:space:]' < CNAME)" = "schwalbach-entscheidet.de" \
-            || { echo "::error file=CNAME::CNAME fehlt oder zeigt nicht auf schwalbach-entscheidet.de"; exit 1; }
+          test -f site/index.html || { echo "::error file=site/index.html::site/index.html fehlt"; exit 1; }
+          test "$(tr -d '[:space:]' < site/CNAME 2>/dev/null)" = "schwalbach-entscheidet.de" \
+            || { echo "::error file=site/CNAME::site/CNAME fehlt oder zeigt nicht auf schwalbach-entscheidet.de"; exit 1; }
 
   links:
     name: Linkcheck (lychee)
@@ -39,7 +43,7 @@ jobs:
       - name: Links prüfen
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
-          args: --config lychee.toml --root-dir "${{ github.workspace }}" --no-progress './**/*.html'
+          args: --config lychee.toml --root-dir "${{ github.workspace }}/site" --no-progress './site/**/*.html'
           lycheeVersion: v0.24.2
           fail: true
           jobSummary: true
@@ -75,7 +79,7 @@ jobs:
       - run: npm ci --no-audit --no-fund
       - name: Seite lokal ausliefern
         run: |
-          python3 -m http.server 8080 --bind 127.0.0.1 >/dev/null 2>&1 &
+          python3 -m http.server 8080 --bind 127.0.0.1 --directory site >/dev/null 2>&1 &
           for i in $(seq 1 20); do curl -fs http://127.0.0.1:8080/ >/dev/null && exit 0; sleep 0.5; done
           echo "::error::Static-Server nicht erreichbar"; exit 1
       - run: npm run check:a11y
@@ -103,3 +107,30 @@ jobs:
           name: lighthouse-report
           path: lhci-report/
           if-no-files-found: warn
+
+  deploy:
+    name: Deploy auf GitHub Pages
+    needs: [pages-setup, links, html, a11y, lighthouse]
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: site/
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
