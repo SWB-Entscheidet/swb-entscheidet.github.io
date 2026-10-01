@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Schwalbach entscheidet – Bürgerentscheid</title>
+  <meta name="description" content="Schwalbach entscheidet: Hier entsteht die Seite zum Bürgerentscheid. Bald mehr.">
+  <meta name="theme-color" content="#f2c12e">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%27-10 -10 20 20%27%3E%3Cpolygon fill=%27%23b3171d%27 points=%270,-10 2.89,-5 8.66,-5 5.77,0 8.66,5 2.89,5 0,10 -2.89,5 -8.66,5 -5.77,0 -8.66,-5 -2.89,-5%27/%3E%3C/svg%3E">
+  <!-- Version 0.1.0 – Platzhalter -->
+  <style>
+    /* Stadtfarben nach dem Wappen von Schwalbach am Taunus:
+       "In Gold ein aufrechter schwarzer Schwalbenschwanz,
+       darüber ein sechsstrahliger roter Stern." */
+    :root {
+      --gold: #f2c12e;
+      --gold-light: #f8dc7a;
+      --ink: #161616;
+      --red: #b3171d;
+      --paper: #fffaf0;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 80% 15%, var(--gold-light) 0, transparent 45%),
+        var(--gold);
+      line-height: 1.5;
+    }
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+    }
+    .card {
+      max-width: 40rem;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 8vw, 4.5rem);
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    h1 span { display: block; }
+    .rule {
+      width: 4.5rem;
+      height: 0.35rem;
+      margin: 1.5rem auto;
+      background: var(--red);
+      border: 0;
+      border-radius: 1rem;
+    }
+    .lead {
+      margin: 0 auto;
+      max-width: 30rem;
+      font-size: clamp(1.1rem, 3.5vw, 1.35rem);
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.45rem 1.1rem;
+      border-radius: 2rem;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    footer {
+      padding: 1.25rem;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 0.35rem solid var(--ink);
+      background: var(--paper);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <h1><span>Schwalbach</span> <span>entscheidet</span></h1>
+      <hr class="rule">
+      <p class="lead">Hier entsteht die Seite zum Bürgerentscheid – bald mehr.</p>
+      <p class="badge">Bald online</p>
+    </div>
+  </main>
+  <footer>
+    <p style="margin:0">schwalbach-entscheidet.de</p>
+  </footer>
+</body>
+</html>
