@@ -19,14 +19,17 @@ concurrency:
 
 jobs:
   pages-setup:
-    name: Pages-Setup (CNAME)
+    name: Pages-Setup (site/)
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           persist-credentials: false
-      - name: site/CNAME zeigt auf die Custom Domain
+      # Beim Actions-Deploy ignoriert GitHub site/CNAME; maßgeblich ist die
+      # Custom Domain in den Pages-Einstellungen. Der Check hält die Datei nur
+      # als Dokumentation konsistent.
+      - name: site/index.html vorhanden, site/CNAME konsistent
         run: |
           test -f site/index.html || { echo "::error file=site/index.html::site/index.html fehlt"; exit 1; }
           test "$(tr -d '[:space:]' < site/CNAME 2>/dev/null)" = "schwalbach-entscheidet.de" \
