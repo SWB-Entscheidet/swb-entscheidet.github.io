@@ -1,21 +1,33 @@
 {
   "defaults": {
     "standard": "WCAG2AA",
-    "runners": ["axe"],
+    "runners": [
+      "axe"
+    ],
     "levelCapWhenNeedsReview": "warning",
     "timeout": 60000,
     "chromeLaunchConfig": {
-      "args": ["--no-sandbox", "--disable-dev-shm-usage"]
+      "args": [
+        "--no-sandbox",
+        "--disable-dev-shm-usage"
+      ]
     }
   },
   "urls": [
     {
-      "url": "http://127.0.0.1:8080/",
-      "viewport": { "width": 1280, "height": 800 }
+      "url": "http://127.0.0.1:8080/?ansicht=desktop",
+      "viewport": {
+        "width": 1280,
+        "height": 800
+      }
     },
     {
-      "url": "http://127.0.0.1:8080/",
-      "viewport": { "width": 375, "height": 740, "isMobile": true }
+      "url": "http://127.0.0.1:8080/?ansicht=mobil",
+      "viewport": {
+        "width": 375,
+        "height": 740,
+        "isMobile": true
+      }
     }
   ]
 }

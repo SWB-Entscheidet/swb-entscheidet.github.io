@@ -17,8 +17,11 @@ jobs:
   pages-setup:
     name: Pages-Setup (CNAME, .nojekyll)
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: CNAME und .nojekyll vorhanden
         run: |
           test -f .nojekyll || { echo "::error file=.nojekyll::.nojekyll fehlt"; exit 1; }
@@ -28,8 +31,11 @@ jobs:
   links:
     name: Linkcheck (lychee)
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: Links prüfen
         uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
@@ -41,20 +47,27 @@ jobs:
   html:
     name: HTML-Validierung (html-validate)
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 22
           cache: npm
-      - run: npm ci --no-audit --no-fund
+      # --ignore-scripts: kein Puppeteer-Chrome-Download nötig
+      - run: npm ci --no-audit --no-fund --ignore-scripts
       - run: npm run check:html
 
   a11y:
     name: Barrierefreiheit (axe, WCAG 2.1 AA)
     runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 22
@@ -70,13 +83,17 @@ jobs:
   lighthouse:
     name: Lighthouse CI
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 22
           cache: npm
-      - run: npm ci --no-audit --no-fund
+      # --ignore-scripts: lhci nutzt das Chrome des Runners
+      - run: npm ci --no-audit --no-fund --ignore-scripts
       # Paket ist @lhci/cli (lokal installiert) – nie "npx lhci" (Squatter-Paket)
       - run: npm run check:lighthouse
       - name: Report als Artifact

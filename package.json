@@ -4,7 +4,7 @@
   "private": true,
   "description": "Qualitäts-Checks für schwalbach-entscheidet.de (nur CI-Werkzeuge, nicht Teil der Website)",
   "scripts": {
-    "check:html": "html-validate \"*.html\"",
+    "check:html": "html-validate \"**/*.html\"",
     "check:a11y": "pa11y-ci --config .pa11yci.json",
     "check:lighthouse": "lhci autorun --config=lighthouserc.json"
   },
