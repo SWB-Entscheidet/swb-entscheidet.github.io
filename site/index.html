@@ -670,7 +670,7 @@
 
         .dropoff-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 18px;
             margin: 28px 0
         }
@@ -799,6 +799,13 @@
             margin-bottom: 8px
         }
 
+        .dropoff-role {
+            font-size: .85rem;
+            color: var(--green);
+            font-weight: 750;
+            margin-bottom: 4px
+        }
+
         .dropoff-section {
             margin-top: 64px
         }
@@ -890,7 +897,7 @@
 
         .dropoff-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 18px;
             margin: 28px 0
         }
@@ -1116,16 +1123,17 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                     </div>
                     <div class="step">
                         <h3>Original abgeben</h3>
-                        <p>Das unterschriebene Original bei einer der unten genannten Vertrauenspersonen abgeben.</p>
+                        <p>Das unterschriebene Original bei einer der unten genannten Abgabestellen abgeben.</p>
                     </div>
                 </div>
                 <div class="dropoff-section" role="group" aria-labelledby="abgabe-title">
                     <p class="eyebrow">Abgabestellen</p>
                     <h2 id="abgabe-title">Unterschriften persönlich abgeben</h2>
                     <p>Ausgefüllte Originalformulare können bei den drei Vertrauenspersonen des Bürgerbegehrens
-                        abgegeben werden.</p>
+                        und bei einer weiteren Abgabestelle abgegeben werden.</p>
                     <div class="dropoff-grid">
                         <article class="dropoff-card">
+                            <p class="dropoff-role">Vertrauensperson</p>
                             <h3>Günter Pabst</h3>
                             <p>Höhenstraße 14<br>65824 Schwalbach am Taunus</p>
                             <div class="dropoff-actions"><button class="map-button" type="button"
@@ -1135,6 +1143,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                     planen</a></div>
                         </article>
                         <article class="dropoff-card">
+                            <p class="dropoff-role">Vertrauensperson</p>
                             <h3>Yvonne Storch</h3>
                             <p>Ginnheimer Straße 7<br>65824 Schwalbach am Taunus</p>
                             <div class="dropoff-actions"><button class="map-button" type="button"
@@ -1145,6 +1154,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                     planen</a></div>
                         </article>
                         <article class="dropoff-card">
+                            <p class="dropoff-role">Vertrauensperson</p>
                             <h3>Dr. Claudia Ludwig-Dinkel</h3>
                             <p>Bahnstraße 21<br>65824 Schwalbach am Taunus</p>
                             <div class="dropoff-actions"><button class="map-button" type="button"
@@ -1152,6 +1162,17 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                     data-name="Dr. Claudia Ludwig-Dinkel">Auf Karte zeigen</button><a class="route-link"
                                     target="_blank" rel="noopener"
                                     href="https://www.google.com/maps/dir/?api=1&amp;destination=Bahnstra%C3%9Fe%2021%2C%2065824%20Schwalbach%20am%20Taunus">Route
+                                    planen</a></div>
+                        </article>
+                        <article class="dropoff-card">
+                            <p class="dropoff-role">Weitere Abgabestelle</p>
+                            <h3>Roland Winter</h3>
+                            <p>Brandenburger Straße 24<br>65824 Schwalbach am Taunus</p>
+                            <div class="dropoff-actions"><button class="map-button" type="button"
+                                    data-map="Brandenburger Straße 24, 65824 Schwalbach am Taunus"
+                                    data-name="Roland Winter">Auf Karte zeigen</button><a class="route-link"
+                                    target="_blank" rel="noopener"
+                                    href="https://www.google.com/maps/dir/?api=1&amp;destination=Brandenburger%20Stra%C3%9Fe%2024%2C%2065824%20Schwalbach%20am%20Taunus">Route
                                     planen</a></div>
                         </article>
                     </div>
