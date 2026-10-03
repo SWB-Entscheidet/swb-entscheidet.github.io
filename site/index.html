@@ -670,7 +670,7 @@
 
         .dropoff-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 18px;
             margin: 28px 0
         }
@@ -799,6 +799,13 @@
             margin-bottom: 8px
         }
 
+        .dropoff-role {
+            font-size: .85rem;
+            color: var(--green);
+            font-weight: 750;
+            margin-bottom: 4px
+        }
+
         .dropoff-section {
             margin-top: 64px
         }
@@ -890,7 +897,7 @@
 
         .dropoff-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 18px;
             margin: 28px 0
         }
@@ -1013,12 +1020,6 @@
                     Taunus. Panoramabild: generierte Illustration, keine authentische Stadtaufnahme.</p>
             </div>
         </section>
-        <div class="strip">
-            <div class="wrap">
-                <p><strong>Bürgerbegehren in Vorbereitung</strong> · Der Start der Unterschriftensammlung und die
-                    Abgabestellen werden hier bekannt gegeben.</p><a href="#unterschreiben">Ablauf ansehen →</a>
-            </div>
-        </div>
         <section class="section" id="worum">
             <div class="wrap">
                 <h2>Worum geht es?</h2>
@@ -1065,7 +1066,7 @@ Stadtrats bleibt bestehen und wird künftig von einem der elf ehrenamtlichen Mag
 Stadträte erhöht sich dadurch nicht.</p>
                     </article>
                     <article class="argument-card"><span aria-hidden="true" class="argument-number">02</span>
-                        <h3>Hauptamtlichen Stelle nicht erforderlich</h3>
+                        <h3>Hauptamtliche Stelle nicht erforderlich</h3>
                         <p>Der Bund der Steuerzahler Hessen hält in Kommunen mit weniger als 20.000 Einwohnern keinen zusätzlichen hauptamtlichen Beigeordneten 
 neben dem Bürgermeister für erforderlich. </p>
                     </article>
@@ -1082,7 +1083,7 @@ hauptamtlicher Dienstbezüge und Versorgungsaufwendungen nur die satzungsmäßig
 Verdienstausfall und Fahrtkosten anfallen.</p>
                     </article>
                     <article class="argument-card"><span aria-hidden="true" class="argument-number">05</span>
-                        <h3>Einsparpotenzial deutlich über 1 Millionen Euro (bei 6-jähriger Amtszeit)</h3>
+                        <h3>Einsparpotenzial deutlich über 1 Million Euro (bei 6-jähriger Amtszeit)</h3>
                         <p>Der Haushalt der Stadt ist derzeit defizitär. Die eingesparten Mittel würden für andere Aufgaben der Stadt zur Verfügung stehen.</p>
                     </article>
                 </div>
@@ -1122,16 +1123,17 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                     </div>
                     <div class="step">
                         <h3>Original abgeben</h3>
-                        <p>Das unterschriebene Original bei einer der unten genannten Vertrauenspersonen abgeben.</p>
+                        <p>Das unterschriebene Original bei einer der unten genannten Abgabestellen abgeben.</p>
                     </div>
                 </div>
                 <div class="dropoff-section" role="group" aria-labelledby="abgabe-title">
                     <p class="eyebrow">Abgabestellen</p>
                     <h2 id="abgabe-title">Unterschriften persönlich abgeben</h2>
                     <p>Ausgefüllte Originalformulare können bei den drei Vertrauenspersonen des Bürgerbegehrens
-                        abgegeben werden.</p>
+                        und bei einer weiteren Abgabestelle abgegeben werden.</p>
                     <div class="dropoff-grid">
                         <article class="dropoff-card">
+                            <p class="dropoff-role">Vertrauensperson</p>
                             <h3>Günter Pabst</h3>
                             <p>Höhenstraße 14<br>65824 Schwalbach am Taunus</p>
                             <div class="dropoff-actions"><button class="map-button" type="button"
@@ -1141,6 +1143,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                     planen</a></div>
                         </article>
                         <article class="dropoff-card">
+                            <p class="dropoff-role">Vertrauensperson</p>
                             <h3>Yvonne Storch</h3>
                             <p>Ginnheimer Straße 7<br>65824 Schwalbach am Taunus</p>
                             <div class="dropoff-actions"><button class="map-button" type="button"
@@ -1151,6 +1154,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                     planen</a></div>
                         </article>
                         <article class="dropoff-card">
+                            <p class="dropoff-role">Vertrauensperson</p>
                             <h3>Dr. Claudia Ludwig-Dinkel</h3>
                             <p>Bahnstraße 21<br>65824 Schwalbach am Taunus</p>
                             <div class="dropoff-actions"><button class="map-button" type="button"
@@ -1158,6 +1162,17 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                     data-name="Dr. Claudia Ludwig-Dinkel">Auf Karte zeigen</button><a class="route-link"
                                     target="_blank" rel="noopener"
                                     href="https://www.google.com/maps/dir/?api=1&amp;destination=Bahnstra%C3%9Fe%2021%2C%2065824%20Schwalbach%20am%20Taunus">Route
+                                    planen</a></div>
+                        </article>
+                        <article class="dropoff-card">
+                            <p class="dropoff-role">Weitere Abgabestelle</p>
+                            <h3>Roland Winter</h3>
+                            <p>Brandenburger Straße 24<br>65824 Schwalbach am Taunus</p>
+                            <div class="dropoff-actions"><button class="map-button" type="button"
+                                    data-map="Brandenburger Straße 24, 65824 Schwalbach am Taunus"
+                                    data-name="Roland Winter">Auf Karte zeigen</button><a class="route-link"
+                                    target="_blank" rel="noopener"
+                                    href="https://www.google.com/maps/dir/?api=1&amp;destination=Brandenburger%20Stra%C3%9Fe%2024%2C%2065824%20Schwalbach%20am%20Taunus">Route
                                     planen</a></div>
                         </article>
                     </div>
@@ -1204,10 +1219,9 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                 <h2>Kurz erklärt</h2>
                 <details>
                     <summary>Wer darf unterschreiben?</summary>
-                    <p>Unterzeichnen können Personen, die zum Zeitpunkt der Unterschrift bei einer Kommunalwahl in
-                        Schwalbach am Taunus wahlberechtigt sind. Das umfasst unter den gesetzlichen Voraussetzungen
-                        volljährige Deutsche und Staatsangehörige anderer EU-Staaten mit entsprechendem Wohnsitz in
-                        Schwalbach.</p>
+                    <p>Unterschriftsberechtigt sind volljährige Deutsche und EU-Bürgerinnen und EU-Bürger, die ihren
+                        Erstwohnsitz seit mindestens 6 Wochen in Schwalbach am Taunus haben. Angaben müssen vollständig
+                        und lesbar sein.</p>
                 </details>
                 <details>
                     <summary>Kann ich online unterschreiben?</summary>
@@ -1280,10 +1294,6 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
             </div>
             <div>
                 <p><a href="impressum/">Impressum</a> · <a href="datenschutz/">Datenschutz</a></p>
-                <p>Die Google-Karte wird erst nach Klick geladen. Dabei werden unter anderem IP-Adresse,
-                    Geräte-/Browserinformationen und die gewählte Adresse an Google übermittelt. Weitere Informationen
-                    finden Sie in der <a href="https://policies.google.com/privacy?hl=de" rel="noopener noreferrer"
-                        target="_blank">Google-Datenschutzerklärung</a>.</p>
                 <p><a href="#start">Zurück nach oben ↑</a></p>
             </div>
         </div>
