@@ -68,6 +68,22 @@
             margin-top: 0
         }
 
+        /* Lange Wörter („Unterschriftenformulare“) und Adressen auf schmalen
+           Bildschirmen umbrechen statt die Seite zu verbreitern */
+        body {
+            overflow-wrap: break-word
+        }
+
+        h1,
+        h2,
+        h3 {
+            hyphens: auto
+        }
+
+        .contact a {
+            overflow-wrap: anywhere
+        }
+
         h1 {
             font-size: clamp(2.15rem, 5vw, 3.8rem);
             line-height: 1.11;
@@ -155,6 +171,7 @@
         .tools {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
             gap: 5px;
             font-size: .8rem
         }
@@ -1421,7 +1438,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
             </div>
         </div>
     </footer>
-    <script>(function () {const r = document.documentElement; document.querySelectorAll('[data-font]').forEach(b => b.addEventListener('click', () => {let v = b.dataset.font; if (v === '0') {r.style.setProperty('--fs', '19px'); return } let n = parseFloat(getComputedStyle(r).fontSize); r.style.setProperty('--fs', Math.min(25, Math.max(17, n + (v === '1' ? 2 : -2))) + 'px')})); const c = document.getElementById('contrast'); c.addEventListener('click', () => {const on = document.body.classList.toggle('contrast'); c.setAttribute('aria-pressed', String(on))})})();</script>
+    <script>(function () {const r = document.documentElement; document.querySelectorAll('[data-font]').forEach(b => b.addEventListener('click', () => {let v = b.dataset.font; if (v === '0') {r.style.setProperty('--fs', '19px'); return } let n = parseFloat(getComputedStyle(r).fontSize); r.style.setProperty('--fs', Math.min(25, Math.max(17, n + (v === '1' ? 2 : -2))) + 'px')})); const c = document.getElementById('contrast'); c.addEventListener('click', () => {const on = document.body.classList.toggle('contrast'); c.setAttribute('aria-pressed', String(on))});})();</script>
     <script>(() => {const d = document.getElementById('double-print-dialog'); document.getElementById('open-double')?.addEventListener('click', () => d.showModal()); document.getElementById('close-double')?.addEventListener('click', () => d.close()); document.getElementById('double-pdf')?.addEventListener('click', () => d.close()); d?.addEventListener('click', e => {if (e.target === d) d.close()});})();</script>
     <script>(function () {
         const map = document.getElementById('dropoff-map');
