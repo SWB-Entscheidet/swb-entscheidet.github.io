@@ -996,19 +996,8 @@
             margin: 0 0 22px
         }
 
-        .event-card {
-            border: 1px solid var(--line, #d7dfdc);
-            border-radius: 16px;
-            padding: 20px;
-            background: #fff
-        }
-
         .event-card h3 {
             margin: 0 0 4px
-        }
-
-        .event-card p {
-            margin: 0 0 14px
         }
 
         .event-note {
@@ -1043,7 +1032,7 @@
                     id="contrast" type="button">Kontrast</button></div>
             <nav aria-label="Hauptnavigation" class="nav"><a href="#worum">Worum geht es?</a><a
                     href="#frage">Fragestellung</a><a href="#begruendung">Begründung der Initiative</a><a
-                    href="#infostaende">Infostände</a><a href="#unterschreiben">Unterschreiben</a><a href="#faq">Fragen &amp; Antworten</a><a
+                    href="#unterschreiben">Unterschreiben</a><a href="#faq">Fragen &amp; Antworten</a><a
                     href="#quellen">Quellen</a><a href="#kontakt">Kontakt</a></nav>
         </div>
     </header>
@@ -1138,8 +1127,8 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                     Dort gibt es Informationen zum Bürgerbegehren und die Unterschriftenformulare.</p>
                 <div class="btns"><a class="btn" href="termine/infostaende-oktober-2026.ics" download="">Alle Termine
                         in den Kalender (.ics)</a></div>
-                <ul class="event-grid" aria-label="Termine der Infostände">
-                    <li class="event-card">
+                <ul class="event-grid" role="list" aria-label="Termine der Infostände">
+                    <li class="dropoff-card event-card">
                         <p class="dropoff-role">Freitag</p>
                         <h3><time datetime="2026-10-09">9. Oktober 2026</time></h3>
                         <p><time datetime="2026-10-09T10:00">10:00</time>–<time datetime="2026-10-09T13:00">13:00</time> Uhr</p>
@@ -1149,7 +1138,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                 aria-label="Google Kalender: Infostand am Freitag, 9. Oktober, 10:00–13:00 Uhr (öffnet neues Fenster)"
                                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Infostand%20B%C3%BCrgerbegehren%20Schwalbach%20entscheidet&amp;dates=20261009T100000/20261009T130000&amp;ctz=Europe%2FBerlin&amp;location=Limes-Einkaufszentrum%2C%20Schwalbach%20am%20Taunus&amp;details=Infostand%20zum%20B%C3%BCrgerbegehren%20%E2%80%9ESchwalbach%20entscheidet%E2%80%9C%3A%20Informationen%20und%20Unterschriftenformulare%20vor%20Ort.%20https%3A%2F%2Fschwalbach-entscheidet.de%2F">Google Kalender</a></div>
                     </li>
-                    <li class="event-card">
+                    <li class="dropoff-card event-card">
                         <p class="dropoff-role">Samstag</p>
                         <h3><time datetime="2026-10-10">10. Oktober 2026</time></h3>
                         <p><time datetime="2026-10-10T09:30">9:30</time>–<time datetime="2026-10-10T12:30">12:30</time> Uhr</p>
@@ -1159,7 +1148,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                 aria-label="Google Kalender: Infostand am Samstag, 10. Oktober, 9:30–12:30 Uhr (öffnet neues Fenster)"
                                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Infostand%20B%C3%BCrgerbegehren%20Schwalbach%20entscheidet&amp;dates=20261010T093000/20261010T123000&amp;ctz=Europe%2FBerlin&amp;location=Limes-Einkaufszentrum%2C%20Schwalbach%20am%20Taunus&amp;details=Infostand%20zum%20B%C3%BCrgerbegehren%20%E2%80%9ESchwalbach%20entscheidet%E2%80%9C%3A%20Informationen%20und%20Unterschriftenformulare%20vor%20Ort.%20https%3A%2F%2Fschwalbach-entscheidet.de%2F">Google Kalender</a></div>
                     </li>
-                    <li class="event-card">
+                    <li class="dropoff-card event-card">
                         <p class="dropoff-role">Freitag</p>
                         <h3><time datetime="2026-10-16">16. Oktober 2026</time></h3>
                         <p><time datetime="2026-10-16T10:00">10:00</time>–<time datetime="2026-10-16T13:00">13:00</time> Uhr</p>
@@ -1169,7 +1158,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                 aria-label="Google Kalender: Infostand am Freitag, 16. Oktober, 10:00–13:00 Uhr (öffnet neues Fenster)"
                                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Infostand%20B%C3%BCrgerbegehren%20Schwalbach%20entscheidet&amp;dates=20261016T100000/20261016T130000&amp;ctz=Europe%2FBerlin&amp;location=Limes-Einkaufszentrum%2C%20Schwalbach%20am%20Taunus&amp;details=Infostand%20zum%20B%C3%BCrgerbegehren%20%E2%80%9ESchwalbach%20entscheidet%E2%80%9C%3A%20Informationen%20und%20Unterschriftenformulare%20vor%20Ort.%20https%3A%2F%2Fschwalbach-entscheidet.de%2F">Google Kalender</a></div>
                     </li>
-                    <li class="event-card">
+                    <li class="dropoff-card event-card">
                         <p class="dropoff-role">Samstag</p>
                         <h3><time datetime="2026-10-17">17. Oktober 2026</time></h3>
                         <p><time datetime="2026-10-17T09:30">9:30</time>–<time datetime="2026-10-17T12:30">12:30</time> Uhr</p>
@@ -1179,7 +1168,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                 aria-label="Google Kalender: Infostand am Samstag, 17. Oktober, 9:30–12:30 Uhr (öffnet neues Fenster)"
                                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Infostand%20B%C3%BCrgerbegehren%20Schwalbach%20entscheidet&amp;dates=20261017T093000/20261017T123000&amp;ctz=Europe%2FBerlin&amp;location=Limes-Einkaufszentrum%2C%20Schwalbach%20am%20Taunus&amp;details=Infostand%20zum%20B%C3%BCrgerbegehren%20%E2%80%9ESchwalbach%20entscheidet%E2%80%9C%3A%20Informationen%20und%20Unterschriftenformulare%20vor%20Ort.%20https%3A%2F%2Fschwalbach-entscheidet.de%2F">Google Kalender</a></div>
                     </li>
-                    <li class="event-card">
+                    <li class="dropoff-card event-card">
                         <p class="dropoff-role">Freitag</p>
                         <h3><time datetime="2026-10-23">23. Oktober 2026</time></h3>
                         <p><time datetime="2026-10-23T10:00">10:00</time>–<time datetime="2026-10-23T13:00">13:00</time> Uhr</p>
@@ -1189,7 +1178,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                 aria-label="Google Kalender: Infostand am Freitag, 23. Oktober, 10:00–13:00 Uhr (öffnet neues Fenster)"
                                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Infostand%20B%C3%BCrgerbegehren%20Schwalbach%20entscheidet&amp;dates=20261023T100000/20261023T130000&amp;ctz=Europe%2FBerlin&amp;location=Limes-Einkaufszentrum%2C%20Schwalbach%20am%20Taunus&amp;details=Infostand%20zum%20B%C3%BCrgerbegehren%20%E2%80%9ESchwalbach%20entscheidet%E2%80%9C%3A%20Informationen%20und%20Unterschriftenformulare%20vor%20Ort.%20https%3A%2F%2Fschwalbach-entscheidet.de%2F">Google Kalender</a></div>
                     </li>
-                    <li class="event-card">
+                    <li class="dropoff-card event-card">
                         <p class="dropoff-role">Samstag</p>
                         <h3><time datetime="2026-10-24">24. Oktober 2026</time></h3>
                         <p><time datetime="2026-10-24T09:30">9:30</time>–<time datetime="2026-10-24T12:30">12:30</time> Uhr</p>
@@ -1199,7 +1188,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                 aria-label="Google Kalender: Infostand am Samstag, 24. Oktober, 9:30–12:30 Uhr (öffnet neues Fenster)"
                                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Infostand%20B%C3%BCrgerbegehren%20Schwalbach%20entscheidet&amp;dates=20261024T093000/20261024T123000&amp;ctz=Europe%2FBerlin&amp;location=Limes-Einkaufszentrum%2C%20Schwalbach%20am%20Taunus&amp;details=Infostand%20zum%20B%C3%BCrgerbegehren%20%E2%80%9ESchwalbach%20entscheidet%E2%80%9C%3A%20Informationen%20und%20Unterschriftenformulare%20vor%20Ort.%20https%3A%2F%2Fschwalbach-entscheidet.de%2F">Google Kalender</a></div>
                     </li>
-                    <li class="event-card">
+                    <li class="dropoff-card event-card">
                         <p class="dropoff-role">Freitag</p>
                         <h3><time datetime="2026-10-30">30. Oktober 2026</time></h3>
                         <p><time datetime="2026-10-30T10:00">10:00</time>–<time datetime="2026-10-30T13:00">13:00</time> Uhr</p>
@@ -1209,7 +1198,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                 aria-label="Google Kalender: Infostand am Freitag, 30. Oktober, 10:00–13:00 Uhr (öffnet neues Fenster)"
                                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Infostand%20B%C3%BCrgerbegehren%20Schwalbach%20entscheidet&amp;dates=20261030T100000/20261030T130000&amp;ctz=Europe%2FBerlin&amp;location=Limes-Einkaufszentrum%2C%20Schwalbach%20am%20Taunus&amp;details=Infostand%20zum%20B%C3%BCrgerbegehren%20%E2%80%9ESchwalbach%20entscheidet%E2%80%9C%3A%20Informationen%20und%20Unterschriftenformulare%20vor%20Ort.%20https%3A%2F%2Fschwalbach-entscheidet.de%2F">Google Kalender</a></div>
                     </li>
-                    <li class="event-card">
+                    <li class="dropoff-card event-card">
                         <p class="dropoff-role">Samstag</p>
                         <h3><time datetime="2026-10-31">31. Oktober 2026</time></h3>
                         <p><time datetime="2026-10-31T09:30">9:30</time>–<time datetime="2026-10-31T12:30">12:30</time> Uhr</p>
