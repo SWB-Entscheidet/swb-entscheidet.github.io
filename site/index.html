@@ -38,25 +38,7 @@
 
         @media(max-width:1180px) {
             html {
-                scroll-padding-top: 210px
-            }
-        }
-
-        @media(max-width:900px) {
-            html {
-                scroll-padding-top: 175px
-            }
-        }
-
-        @media(max-width:620px) {
-            html {
-                scroll-padding-top: 218px
-            }
-        }
-
-        @media(max-width:360px) {
-            html {
-                scroll-padding-top: 282px
+                scroll-padding-top: 76px
             }
         }
 
@@ -564,18 +546,6 @@
         }
 
         @media(max-width:900px) {
-            .head {
-                align-items: flex-start
-            }
-
-            .nav {
-                order: 3;
-                width: 100%;
-                overflow-x: auto;
-                white-space: nowrap;
-                flex-wrap: nowrap
-            }
-
             .cards,
             .statgrid,
             .steps {
@@ -592,19 +562,6 @@
         }
 
         @media(max-width:620px) {
-            .head {
-                padding: 9px 17px
-            }
-
-            .brand img {
-                width: 50px;
-                height: 50px
-            }
-
-            .tools {
-                margin-left: auto
-            }
-
             .wrap {
                 padding: 0 19px
             }
@@ -630,10 +587,6 @@
 
             .section {
                 padding: 53px 0
-            }
-
-            .nav a {
-                padding: 9px 5px
             }
 
             h1 {
@@ -1059,6 +1012,126 @@
                 grid-template-columns: 1fr
             }
         }
+        /* Mobil-Menü: bis 1180 px (darunter bricht die Desktop-Navigation
+           samt 15-px-Scrollleiste zweizeilig um) ersetzt eine schlanke Leiste mit <details>-Menü
+           die Navigation und die Werkzeugleiste */
+        .menu {
+            display: none
+        }
+
+        @media(max-width:1180px) {
+            .head {
+                position: relative;
+                padding: 8px 17px;
+                align-items: center;
+                flex-wrap: nowrap;
+                gap: 12px
+            }
+
+            .brand {
+                gap: 10px;
+                min-width: 0;
+                font-size: .8rem
+            }
+
+            .brand img {
+                width: 44px;
+                height: 44px
+            }
+
+            .head > .tools,
+            .head > .nav {
+                display: none
+            }
+
+            /* globale FAQ-Regeln für details/summary zurücksetzen */
+            .menu {
+                display: block;
+                flex: none;
+                margin: 0;
+                padding: 0;
+                border: 0;
+                background: none
+            }
+
+            .menu summary {
+                list-style: none;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                min-height: 44px;
+                padding: 0 12px;
+                border: 2px solid var(--green);
+                border-radius: 9px;
+                color: var(--green);
+                font-weight: 750
+            }
+
+            .menu summary::-webkit-details-marker {
+                display: none
+            }
+
+            .menu[open] summary {
+                background: var(--green);
+                color: #fff
+            }
+
+            .menu-panel {
+                position: absolute;
+                top: calc(100% + 1px);
+                left: 0;
+                right: 0;
+                max-height: calc(100vh - 90px);
+                max-height: calc(100dvh - 90px);
+                overflow-y: auto;
+                background: #fff;
+                border-bottom: 1px solid var(--line);
+                box-shadow: 0 12px 24px #16273526;
+                padding: 6px 17px 16px
+            }
+
+            .menu-nav a {
+                display: flex;
+                align-items: center;
+                min-height: 48px;
+                border-bottom: 1px solid var(--line);
+                color: var(--ink);
+                font-weight: 650;
+                text-decoration: none
+            }
+
+            .menu-nav a[hidden] {
+                display: none
+            }
+
+            .menu-tools {
+                margin: 14px 0 0;
+                gap: 8px
+            }
+
+            .menu-tools button {
+                min-width: 44px;
+                min-height: 44px
+            }
+        }
+
+        @media(max-width:400px) {
+            .head {
+                padding: 8px 10px;
+                gap: 8px
+            }
+
+            .brand {
+                gap: 8px;
+                font-size: .7rem
+            }
+
+            .brand img {
+                width: 38px;
+                height: 38px
+            }
+        }
     </style>
 </head>
 
@@ -1072,11 +1145,29 @@
                     aria-label="Schrift verkleinern" data-font="-1" type="button">A−</button><button
                     aria-label="Schrift zurücksetzen" data-font="0" type="button">A</button><button
                     aria-label="Schrift vergrößern" data-font="1" type="button">A+</button><button aria-pressed="false"
-                    id="contrast" type="button">Kontrast</button></div>
+                    id="contrast" data-contrast="" type="button">Kontrast</button></div>
             <nav aria-label="Hauptnavigation" class="nav"><a href="#worum">Worum geht es?</a><a
                     href="#frage">Fragestellung</a><a href="#begruendung">Begründung der Initiative</a><a
                     href="#unterschreiben">Unterschreiben</a><a href="#faq">Fragen &amp; Antworten</a><a
                     href="#quellen">Quellen</a><a href="#kontakt">Kontakt</a></nav>
+            <!-- Mobil: schlanke Leiste mit aufklappbarem Menü, funktioniert ohne JS -->
+            <details class="menu">
+                <summary><span aria-hidden="true">☰</span> Menü</summary>
+                <div class="menu-panel">
+                    <nav aria-label="Hauptnavigation" class="menu-nav"><a href="#worum">Worum geht es?</a><a
+                            href="#frage">Fragestellung</a><a href="#begruendung">Begründung der Initiative</a><a
+                            href="#infostaende">Infostände</a><a href="#unterschreiben">Unterschreiben</a><a
+                            href="#faq">Fragen &amp; Antworten</a><a href="#quellen">Quellen</a><a
+                            href="#kontakt">Kontakt</a></nav>
+                    <div role="group" aria-label="Darstellung anpassen" class="tools menu-tools">
+                        <span>Schriftgröße</span><button aria-label="Schrift verkleinern" data-font="-1"
+                            type="button">A−</button><button aria-label="Schrift zurücksetzen" data-font="0"
+                            type="button">A</button><button aria-label="Schrift vergrößern" data-font="1"
+                            type="button">A+</button><button aria-pressed="false" data-contrast=""
+                            type="button">Kontrast</button>
+                    </div>
+                </div>
+            </details>
         </div>
     </header>
     <main id="inhalt">
@@ -1257,7 +1348,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
             </div>
         </section>
         <!-- Vergangene Infostände ausblenden; ohne JS bleiben alle Termine sichtbar -->
-        <script>(function () {const s = document.getElementById('infostaende'); const now = Date.now(); let offen = 0; s.querySelectorAll('[data-ende]').forEach(k => {if (Date.parse(k.dataset.ende) < now) k.hidden = true; else offen++}); if (!offen) s.hidden = true})();</script>
+        <script>(function () {const s = document.getElementById('infostaende'); const now = Date.now(); let offen = 0; s.querySelectorAll('[data-ende]').forEach(k => {if (Date.parse(k.dataset.ende) < now) k.hidden = true; else offen++}); if (!offen) {s.hidden = true; document.querySelectorAll('a[href="#infostaende"]').forEach(a => {a.hidden = true})}})();</script>
         <section class="section cream" id="unterschreiben">
             <div class="wrap">
                 <p class="eyebrow">Bürgerbegehren unterstützen</p>
@@ -1466,7 +1557,7 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
             </div>
         </div>
     </footer>
-    <script>(function () {const r = document.documentElement; document.querySelectorAll('[data-font]').forEach(b => b.addEventListener('click', () => {let v = b.dataset.font; if (v === '0') {r.style.setProperty('--fs', '19px'); return } let n = parseFloat(getComputedStyle(r).fontSize); r.style.setProperty('--fs', Math.min(25, Math.max(17, n + (v === '1' ? 2 : -2))) + 'px')})); const c = document.getElementById('contrast'); c.addEventListener('click', () => {const on = document.body.classList.toggle('contrast'); c.setAttribute('aria-pressed', String(on))}); const h = document.querySelector('header'); if (h && 'ResizeObserver' in window) new ResizeObserver(() => {r.style.scrollPaddingTop = (h.offsetHeight + 8) + 'px'}).observe(h)})();</script>
+    <script>(function () {const r = document.documentElement; document.querySelectorAll('[data-font]').forEach(b => b.addEventListener('click', () => {let v = b.dataset.font; if (v === '0') {r.style.setProperty('--fs', '19px'); return } let n = parseFloat(getComputedStyle(r).fontSize); r.style.setProperty('--fs', Math.min(25, Math.max(17, n + (v === '1' ? 2 : -2))) + 'px')})); const cs = document.querySelectorAll('[data-contrast]'); cs.forEach(c => c.addEventListener('click', () => {const on = document.body.classList.toggle('contrast'); cs.forEach(x => x.setAttribute('aria-pressed', String(on)))})); const m = document.querySelector('details.menu'); if (m) {m.querySelectorAll('.menu-nav a').forEach(a => a.addEventListener('click', () => {m.open = false})); document.addEventListener('keydown', e => {if (e.key === 'Escape' && m.open) {m.open = false; m.querySelector('summary').focus()}}); document.addEventListener('click', e => {if (m.open && !m.contains(e.target)) m.open = false})} const h = document.querySelector('header'); if (h && 'ResizeObserver' in window) new ResizeObserver(() => {r.style.scrollPaddingTop = (h.offsetHeight + 8) + 'px'}).observe(h)})();</script>
     <script>(() => {const d = document.getElementById('double-print-dialog'); document.getElementById('open-double')?.addEventListener('click', () => d.showModal()); document.getElementById('close-double')?.addEventListener('click', () => d.close()); document.getElementById('double-pdf')?.addEventListener('click', () => d.close()); d?.addEventListener('click', e => {if (e.target === d) d.close()});})();</script>
     <script>(function () {
         const map = document.getElementById('dropoff-map');
