@@ -1,3 +1,6 @@
 # Google Maps blockt Bot-Anfragen (Consent-Redirect, 429); die URLs sind
 # reine Routen-Deeplinks mit Adresse als Parameter und werden nicht geprüft.
 ^https://www\.google\.com/maps/
+# Google Kalender leitet Bot-Anfragen auf den Login um; die URLs sind reine
+# Termin-Vorlagen (action=TEMPLATE) mit Daten als Parameter.
+^https://calendar\.google\.com/calendar/render
