@@ -775,6 +775,93 @@
                 height: 360px
             }
         }
+        /* Fortschritt der Unterschriftensammlung: Balken reicht bis
+           Ziel + 30 % Puffer (1.365); Marke 100 % = nötige 1.050 */
+        .progress {
+            max-width: 36rem;
+            margin: 22px 0 6px;
+            padding: 16px 18px 14px;
+            background: rgba(255, 255, 255, .94);
+            border: 1px solid var(--line);
+            border-left: 6px solid var(--green);
+            border-radius: 10px
+        }
+
+        .progress .progress-title {
+            font-size: .93rem;
+            line-height: 1.4;
+            margin: 0 0 4px;
+            color: var(--ink)
+        }
+
+        .progress-head {
+            line-height: 1.35;
+            margin: 0 0 12px
+        }
+
+        .progress-count {
+            font-size: clamp(1.3rem, 6vw, 1.9rem);
+            font-weight: 800;
+            color: var(--green);
+            white-space: nowrap
+        }
+
+        .progress-text {
+            font-weight: 650
+        }
+
+        .progress-goal {
+            font-size: .9rem;
+            color: var(--muted)
+        }
+
+        .progress-bar {
+            position: relative;
+            padding-bottom: 26px
+        }
+
+        .progress-track {
+            height: 24px;
+            background: linear-gradient(90deg, var(--pale) 76.9%, transparent 76.9%),
+                repeating-linear-gradient(-45deg, var(--pale) 0 6px, var(--line) 6px 8px);
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            overflow: hidden
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--green), var(--green2))
+        }
+
+        .progress-mark {
+            position: absolute;
+            top: -5px;
+            height: 34px;
+            border-left: 3px solid var(--ink)
+        }
+
+        .progress-label {
+            position: absolute;
+            bottom: 0;
+            font-size: .8rem;
+            line-height: 1.3;
+            color: var(--muted);
+            white-space: nowrap
+        }
+
+        .progress-label.mark {
+            transform: translateX(-100%);
+            padding-right: 6px;
+            font-weight: 750;
+            color: var(--ink)
+        }
+
+
+        .progress-note {
+            margin: 6px 0 0;
+            font-size: .9rem
+        }
     </style>
     <style>
         .formoptions {
@@ -1175,6 +1262,19 @@
             <div class="wrap">
                 <p class="eyebrow">Bürgerbegehren in Schwalbach am Taunus</p>
                 <h1>Wie soll das Amt des Ersten Stadtrats künftig ausgeübt werden?</h1>
+                <section class="progress" aria-labelledby="progress-title">
+                    <h2 class="progress-title" id="progress-title">Stand der Unterschriftensammlung</h2>
+                    <p class="progress-head"><span class="progress-count">40 %</span> <span
+                            class="progress-text">der nötigen Unterschriften sind gesammelt</span></p>
+                    <div class="progress-bar" aria-hidden="true">
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width:31.1%"></div>
+                        </div>
+                        <span class="progress-mark" style="left:76.9%"></span>
+                        <span class="progress-label mark" style="left:76.9%">100 %</span>
+                    </div>
+                    <p class="progress-note progress-goal">Stand:&nbsp;10.&nbsp;Oktober&nbsp;2026</p>
+                </section>
                 <p class="lead">Das Bürgerbegehren möchte die hauptamtliche Stelle entfallen lassen. Die gesetzliche
                     Funktion soll künftig von einem der elf ehrenamtlichen Magistratsmitglieder wahrgenommen werden.</p>
                 <div class="btns"><a class="btn" href="#frage">Die genaue Frage lesen →</a><a class="btn secondary"
