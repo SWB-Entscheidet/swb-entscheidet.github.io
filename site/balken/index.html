@@ -777,7 +777,7 @@
             }
         }
         /* Fortschritt der Unterschriftensammlung: Balken reicht bis
-           Ziel + 30 % Puffer (1.365); Marke bei den nötigen 1.050 */
+           Ziel + 30 % Puffer (1.365); Marke 100 % = nötige 1.050 */
         .progress {
             max-width: 36rem;
             margin: 22px 0 6px;
@@ -796,11 +796,7 @@
         }
 
         .progress-head {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 2px 16px;
+            line-height: 1.35;
             margin: 0 0 12px
         }
 
@@ -809,6 +805,10 @@
             font-weight: 800;
             color: var(--green);
             white-space: nowrap
+        }
+
+        .progress-text {
+            font-weight: 650
         }
 
         .progress-goal {
@@ -858,9 +858,6 @@
             color: var(--ink)
         }
 
-        .progress-label.end {
-            right: 0
-        }
 
         .progress-note {
             margin: 6px 0 0;
@@ -1268,19 +1265,16 @@
                 <h1>Wie soll das Amt des Ersten Stadtrats künftig ausgeübt werden?</h1>
                 <section class="progress" aria-labelledby="progress-title">
                     <h2 class="progress-title" id="progress-title">Stand der Unterschriftensammlung</h2>
-                    <p class="progress-head"><span class="progress-count">425 Unterschriften</span><span
-                            class="progress-goal">nötig: 1.050</span></p>
+                    <p class="progress-head"><span class="progress-count">40 %</span> <span
+                            class="progress-text">der nötigen Unterschriften sind gesammelt</span></p>
                     <div class="progress-bar" aria-hidden="true">
                         <div class="progress-track">
                             <div class="progress-fill" style="width:31.1%"></div>
                         </div>
                         <span class="progress-mark" style="left:76.9%"></span>
-                        <span class="progress-label mark" style="left:76.9%">1.050</span>
-                        <span class="progress-label end">Puffer</span>
+                        <span class="progress-label mark" style="left:76.9%">100 %</span>
                     </div>
-                    <p class="progress-note"><strong>Noch 625 Unterschriften</strong> bis zu den nötigen 1.050 (10 % der
-                        Wahlberechtigten). Wir sammeln mit Puffer weiter, weil bei der Prüfung erfahrungsgemäß einige
-                        Unterschriften ungültig sind. <span class="progress-goal">Stand:&nbsp;10.&nbsp;Oktober&nbsp;2026</span></p>
+                    <p class="progress-note progress-goal">Stand:&nbsp;10.&nbsp;Oktober&nbsp;2026</p>
                 </section>
                 <p class="lead">Das Bürgerbegehren möchte die hauptamtliche Stelle entfallen lassen. Die gesetzliche
                     Funktion soll künftig von einem der elf ehrenamtlichen Magistratsmitglieder wahrgenommen werden.</p>
