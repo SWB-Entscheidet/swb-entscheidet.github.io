@@ -776,21 +776,22 @@
                 height: 360px
             }
         }
-
-        /* Fortschritt der Unterschriftensammlung */
+        /* Fortschritt der Unterschriftensammlung: Balken reicht bis
+           Ziel + 30 % Puffer (1.365); Marke bei den nötigen 1.050 */
         .progress {
-            max-width: 34rem;
-            margin: 0 0 24px;
-            padding: 16px 18px;
+            max-width: 36rem;
+            margin: 22px 0 6px;
+            padding: 16px 18px 14px;
             background: rgba(255, 255, 255, .94);
             border: 1px solid var(--line);
+            border-left: 6px solid var(--green);
             border-radius: 10px
         }
 
         .progress .progress-title {
             font-size: .93rem;
             line-height: 1.4;
-            margin: 0 0 6px;
+            margin: 0 0 4px;
             color: var(--ink)
         }
 
@@ -799,15 +800,15 @@
             flex-wrap: wrap;
             justify-content: space-between;
             align-items: baseline;
-            gap: 4px 16px;
-            margin: 0 0 10px
+            gap: 2px 16px;
+            margin: 0 0 12px
         }
 
         .progress-count {
-            font-size: clamp(1.2rem, 5vw, 1.5rem);
-            white-space: nowrap;
+            font-size: clamp(1.3rem, 6vw, 1.9rem);
             font-weight: 800;
-            color: var(--green)
+            color: var(--green);
+            white-space: nowrap
         }
 
         .progress-goal {
@@ -815,23 +816,54 @@
             color: var(--muted)
         }
 
-        .progress-track {
+        .progress-bar {
             position: relative;
-            height: 22px;
-            background: var(--pale);
+            padding-bottom: 26px
+        }
+
+        .progress-track {
+            height: 24px;
+            background: linear-gradient(90deg, var(--pale) 76.9%, transparent 76.9%),
+                repeating-linear-gradient(-45deg, var(--pale) 0 6px, var(--line) 6px 8px);
             border: 1px solid var(--line);
-            border-radius: 11px;
+            border-radius: 12px;
             overflow: hidden
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, var(--green), var(--green2));
-            border-radius: 11px 0 0 11px
+            background: linear-gradient(90deg, var(--green), var(--green2))
+        }
+
+        .progress-mark {
+            position: absolute;
+            top: -5px;
+            height: 34px;
+            border-left: 3px solid var(--ink)
+        }
+
+        .progress-label {
+            position: absolute;
+            bottom: 0;
+            font-size: .8rem;
+            line-height: 1.3;
+            color: var(--muted);
+            white-space: nowrap
+        }
+
+        .progress-label.mark {
+            transform: translateX(-100%);
+            padding-right: 6px;
+            font-weight: 750;
+            color: var(--ink)
+        }
+
+        .progress-label.end {
+            right: 0
         }
 
         .progress-note {
-            margin: 10px 0 0;
+            margin: 6px 0 0;
             font-size: .9rem
         }
     </style>
@@ -1234,20 +1266,26 @@
             <div class="wrap">
                 <p class="eyebrow">Bürgerbegehren in Schwalbach am Taunus</p>
                 <h1>Wie soll das Amt des Ersten Stadtrats künftig ausgeübt werden?</h1>
+                <section class="progress" aria-labelledby="progress-title">
+                    <h2 class="progress-title" id="progress-title">Stand der Unterschriftensammlung</h2>
+                    <p class="progress-head"><span class="progress-count">425 Unterschriften</span><span
+                            class="progress-goal">nötig: 1.050</span></p>
+                    <div class="progress-bar" aria-hidden="true">
+                        <div class="progress-track">
+                            <div class="progress-fill" style="width:31.1%"></div>
+                        </div>
+                        <span class="progress-mark" style="left:76.9%"></span>
+                        <span class="progress-label mark" style="left:76.9%">1.050</span>
+                        <span class="progress-label end">Puffer</span>
+                    </div>
+                    <p class="progress-note"><strong>Noch 625 Unterschriften</strong> bis zu den nötigen 1.050 (10 % der
+                        Wahlberechtigten). Wir sammeln mit Puffer weiter, weil bei der Prüfung erfahrungsgemäß einige
+                        Unterschriften ungültig sind. <span class="progress-goal">Stand:&nbsp;10.&nbsp;Oktober&nbsp;2026</span></p>
+                </section>
                 <p class="lead">Das Bürgerbegehren möchte die hauptamtliche Stelle entfallen lassen. Die gesetzliche
                     Funktion soll künftig von einem der elf ehrenamtlichen Magistratsmitglieder wahrgenommen werden.</p>
                 <div class="btns"><a class="btn" href="#frage">Die genaue Frage lesen →</a><a class="btn secondary"
                         href="#unterschreiben">Zum Unterschreiben →</a></div>
-                <section class="progress" aria-labelledby="progress-title">
-                    <h2 class="progress-title" id="progress-title">Stand der Unterschriftensammlung</h2>
-                    <p class="progress-head"><span class="progress-count">425 Unterschriften</span><span
-                            class="progress-goal">Ziel: 1.045 (Quorum)</span></p>
-                    <div class="progress-track" aria-hidden="true">
-                        <div class="progress-fill" style="width:40.7%"></div>
-                    </div>
-                    <p class="progress-note"><strong>41 % geschafft</strong> – noch 620 Unterschriften bis zum Quorum.<br>
-                        <span class="progress-goal">Stand: 10. Oktober 2026</span></p>
-                </section>
                 <p class="notice">Unabhängige Bürgerinitiative · Keine offizielle Website der Stadt Schwalbach am
                     Taunus. Panoramabild: generierte Illustration, keine authentische Stadtaufnahme.</p>
             </div>
