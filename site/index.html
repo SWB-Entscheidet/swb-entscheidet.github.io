@@ -858,6 +858,19 @@
         }
 
 
+        /* Ziel überschritten: Balken endet bei 100 %, die Füllung ragt
+           über das Ende hinaus */
+        .progress-bar.over .progress-track {
+            overflow: visible;
+            background: var(--pale)
+        }
+
+        .progress-bar.over .progress-fill {
+            width: calc(100% + 30px);
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(13, 83, 75, .35)
+        }
+
         .progress-note {
             margin: 6px 0 0;
             font-size: .9rem
@@ -1266,12 +1279,12 @@
                     <h2 class="progress-title" id="progress-title">Stand der Unterschriftensammlung</h2>
                     <p class="progress-head"><span class="progress-count">118 %</span> <span
                             class="progress-text">der nötigen Unterschriften sind gesammelt</span></p>
-                    <div class="progress-bar" aria-hidden="true">
+                    <div class="progress-bar over" aria-hidden="true">
                         <div class="progress-track">
-                            <div class="progress-fill" style="width:91.4%"></div>
+                            <div class="progress-fill"></div>
                         </div>
-                        <span class="progress-mark" style="left:76.9%"></span>
-                        <span class="progress-label mark" style="left:76.9%">100 %</span>
+                        <span class="progress-mark" style="left:100%"></span>
+                        <span class="progress-label mark" style="left:100%">100 %</span>
                     </div>
                     <p class="progress-note progress-goal">Stand:&nbsp;28.&nbsp;Oktober&nbsp;2026</p>
                 </section>
