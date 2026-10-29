@@ -286,6 +286,24 @@
             filter: brightness(1.1)
         }
 
+        /* Aktuelle Ankündigung oberhalb des Heros */
+        .banner {
+            background: #ffd84d;
+            color: var(--ink);
+            border-bottom: 1px solid #c9a21a;
+            padding: 14px 0;
+            font-size: 1.05rem
+        }
+
+        .banner p {
+            margin: 0
+        }
+
+        .contrast .banner {
+            background: #fff;
+            border-bottom: 3px solid #000
+        }
+
         .notice {
             display: inline-block;
             background: rgba(255, 255, 255, .9);
@@ -1258,6 +1276,12 @@
         </div>
     </header>
     <main id="inhalt">
+        <aside class="banner" aria-label="Aktuelle Ankündigung">
+            <div class="wrap">
+                <p><strong>Heute, Donnerstag, 29.&nbsp;Oktober&nbsp;2026, um 19:20&nbsp;Uhr</strong> übergeben wir
+                    die Unterschriften im Bürgerhaus, Raum&nbsp;7/8, an den Bürgermeister.</p>
+            </div>
+        </aside>
         <section class="hero" id="start">
             <div class="wrap">
                 <p class="eyebrow">Bürgerbegehren in Schwalbach am Taunus</p>
