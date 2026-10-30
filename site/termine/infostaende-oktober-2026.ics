@@ -95,28 +95,4 @@ DESCRIPTION:Infostand zum Bürgerbegehren „Schwalbach entscheidet“: Inf
  idet.de/
 URL:https://schwalbach-entscheidet.de/
 END:VEVENT
-BEGIN:VEVENT
-UID:infostand-20261030@schwalbach-entscheidet.de
-DTSTAMP:20261006T000000Z
-DTSTART;TZID=Europe/Berlin:20261030T100000
-DTEND;TZID=Europe/Berlin:20261030T130000
-SUMMARY:Infostand Bürgerbegehren Schwalbach entscheidet
-LOCATION:Limes Zentrum Marktplatz\, Schwalbach am Taunus
-DESCRIPTION:Infostand zum Bürgerbegehren „Schwalbach entscheidet“: Inf
- ormationen und Unterschriftenformulare vor Ort. https://schwalbach-entsche
- idet.de/
-URL:https://schwalbach-entscheidet.de/
-END:VEVENT
-BEGIN:VEVENT
-UID:infostand-20261031@schwalbach-entscheidet.de
-DTSTAMP:20261006T000000Z
-DTSTART;TZID=Europe/Berlin:20261031T093000
-DTEND;TZID=Europe/Berlin:20261031T123000
-SUMMARY:Infostand Bürgerbegehren Schwalbach entscheidet
-LOCATION:Limes Zentrum Marktplatz\, Schwalbach am Taunus
-DESCRIPTION:Infostand zum Bürgerbegehren „Schwalbach entscheidet“: Inf
- ormationen und Unterschriftenformulare vor Ort. https://schwalbach-entsche
- idet.de/
-URL:https://schwalbach-entscheidet.de/
-END:VEVENT
 END:VCALENDAR
