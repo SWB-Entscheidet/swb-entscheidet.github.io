@@ -300,6 +300,10 @@
             margin: 0
         }
 
+        .banner .banner-link {
+            margin-top: .4em
+        }
+
         .banner .banner-invite {
             margin-top: .5em;
             font-weight: 700
@@ -799,8 +803,8 @@
                 height: 360px
             }
         }
-        /* Fortschritt der Unterschriftensammlung: Balken reicht bis
-           Ziel + 30 % Puffer (1.365); Marke 100 % = nötige 1.050 */
+        /* Fortschritt der Unterschriftensammlung: volle Balkenbreite =
+           aktueller Stand; Marke 100 % = nötige 1.045 */
         .progress {
             max-width: 36rem;
             margin: 22px 0 6px;
@@ -1268,7 +1272,7 @@
                     <nav aria-label="Hauptnavigation" class="menu-nav"><a href="#worum">Worum geht es?</a><a
                             href="#frage">Fragestellung</a><a href="#begruendung">Begründung der Initiative</a><a
                             href="#infostaende">Infostände</a><a href="#unterschreiben">Unterschreiben</a><a
-                            href="#faq">Fragen &amp; Antworten</a><a href="#quellen">Quellen</a><a
+                            href="#presse">Presse</a><a href="#faq">Fragen &amp; Antworten</a><a href="#quellen">Quellen</a><a
                             href="#kontakt">Kontakt</a></nav>
                     <div role="group" aria-label="Darstellung anpassen" class="tools menu-tools">
                         <span>Schriftgröße</span><button aria-label="Schrift verkleinern" data-font="-1"
@@ -1287,6 +1291,7 @@
                 <p>Am <strong>29.&nbsp;Oktober&nbsp;2026</strong> haben wir dem Bürgermeister in einer öffentlichen
                     Sitzung im Bürgerhaus die Unterschriften übergeben.</p>
                 <p class="banner-invite">Danke für Ihre Unterstützung <span aria-hidden="true">♥️</span></p>
+                <p class="banner-link"><a href="#presse">Was die Presse berichtet →</a></p>
             </div>
         </aside>
         <section class="hero" id="start">
@@ -1301,8 +1306,8 @@
                         <div class="progress-track">
                             <div class="progress-fill" style="width:100%"></div>
                         </div>
-                        <span class="progress-mark" style="left:77.3%"></span>
-                        <span class="progress-label mark" style="left:77.3%">100 %</span>
+                        <span class="progress-mark" style="left:77.0%"></span>
+                        <span class="progress-label mark" style="left:77.0%">100 %</span>
                     </div>
                     <p class="progress-note progress-goal">Stand:&nbsp;29.&nbsp;Oktober&nbsp;2026</p>
                 </section>
@@ -1453,26 +1458,6 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                                 aria-label="Google Kalender: Infostand am Samstag, 24. Oktober, 9:30–12:30 Uhr (öffnet neues Fenster)"
                                 href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Infostand%20B%C3%BCrgerbegehren%20Schwalbach%20entscheidet&amp;dates=20261024T093000/20261024T123000&amp;ctz=Europe%2FBerlin&amp;location=Limes%20Zentrum%20Marktplatz%2C%20Schwalbach%20am%20Taunus&amp;details=Infostand%20zum%20B%C3%BCrgerbegehren%20%E2%80%9ESchwalbach%20entscheidet%E2%80%9C%3A%20Informationen%20und%20Unterschriftenformulare%20vor%20Ort.%20https%3A%2F%2Fschwalbach-entscheidet.de%2F">Google Kalender</a></div>
                     </li>
-                    <li class="dropoff-card event-card" data-ende="2026-10-30T13:00:00+01:00">
-                        <p class="dropoff-role">Freitag</p>
-                        <h3><time datetime="2026-10-30">30. Oktober 2026</time></h3>
-                        <p><time datetime="2026-10-30T10:00">10:00</time>–<time datetime="2026-10-30T13:00">13:00</time> Uhr</p>
-                        <div class="dropoff-actions"><a class="route-link" href="termine/infostand-2026-10-30.ics"
-                                download="" aria-label="In Kalender (.ics): Infostand am Freitag, 30. Oktober, 10:00–13:00 Uhr">In Kalender (.ics)</a><a
-                                class="route-link" target="_blank" rel="noopener"
-                                aria-label="Google Kalender: Infostand am Freitag, 30. Oktober, 10:00–13:00 Uhr (öffnet neues Fenster)"
-                                href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Infostand%20B%C3%BCrgerbegehren%20Schwalbach%20entscheidet&amp;dates=20261030T100000/20261030T130000&amp;ctz=Europe%2FBerlin&amp;location=Limes%20Zentrum%20Marktplatz%2C%20Schwalbach%20am%20Taunus&amp;details=Infostand%20zum%20B%C3%BCrgerbegehren%20%E2%80%9ESchwalbach%20entscheidet%E2%80%9C%3A%20Informationen%20und%20Unterschriftenformulare%20vor%20Ort.%20https%3A%2F%2Fschwalbach-entscheidet.de%2F">Google Kalender</a></div>
-                    </li>
-                    <li class="dropoff-card event-card" data-ende="2026-10-31T12:30:00+01:00">
-                        <p class="dropoff-role">Samstag</p>
-                        <h3><time datetime="2026-10-31">31. Oktober 2026</time></h3>
-                        <p><time datetime="2026-10-31T09:30">9:30</time>–<time datetime="2026-10-31T12:30">12:30</time> Uhr</p>
-                        <div class="dropoff-actions"><a class="route-link" href="termine/infostand-2026-10-31.ics"
-                                download="" aria-label="In Kalender (.ics): Infostand am Samstag, 31. Oktober, 9:30–12:30 Uhr">In Kalender (.ics)</a><a
-                                class="route-link" target="_blank" rel="noopener"
-                                aria-label="Google Kalender: Infostand am Samstag, 31. Oktober, 9:30–12:30 Uhr (öffnet neues Fenster)"
-                                href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Infostand%20B%C3%BCrgerbegehren%20Schwalbach%20entscheidet&amp;dates=20261031T093000/20261031T123000&amp;ctz=Europe%2FBerlin&amp;location=Limes%20Zentrum%20Marktplatz%2C%20Schwalbach%20am%20Taunus&amp;details=Infostand%20zum%20B%C3%BCrgerbegehren%20%E2%80%9ESchwalbach%20entscheidet%E2%80%9C%3A%20Informationen%20und%20Unterschriftenformulare%20vor%20Ort.%20https%3A%2F%2Fschwalbach-entscheidet.de%2F">Google Kalender</a></div>
-                    </li>
                 </ul>
                 <p class="event-note">Ort: Limes Zentrum Marktplatz, Schwalbach am Taunus. Die ICS-Dateien lassen sich in
                     Outlook, Apple Kalender, Thunderbird und den meisten Kalender-Apps öffnen.</p>
@@ -1601,6 +1586,20 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
                             href="Unterschriftenformular_doppelseitig_15_Unterschriften.pdf" id="double-pdf">Verstanden
                             · PDF öffnen</a><button id="close-double" type="button">Abbrechen</button></div>
                 </dialog>
+            </div>
+        </section>
+        <section class="section" id="presse">
+            <div class="wrap">
+                <p class="eyebrow">In den Medien</p>
+                <h2>Presse</h2>
+                <ul class="source-list">
+                    <li><a href="https://www.fnp.de/lokales/main-taunus/schwalbach-ort95921/1358-unterschriften-schwalbach-stimmt-ueber-stadtrats-amt-ab-94566791.html"
+                            rel="noopener noreferrer" target="_blank">Frankfurter Neue Presse: Schwalbach stimmt über
+                            Stadtrats-Amt ab ↗</a></li>
+                    <li><a href="https://www.taunus-nachrichten.de/schwalbach/nachrichten/schwalbach/koalition-fordert-viel-ersten-stadtrat-id241075.html"
+                            rel="noopener noreferrer" target="_blank">Taunus-Nachrichten, 29.&nbsp;Oktober&nbsp;2026:
+                            Koalition fordert nicht viel vom Ersten Stadtrat ↗</a></li>
+                </ul>
             </div>
         </section>
         <section class="section alt" id="faq">
