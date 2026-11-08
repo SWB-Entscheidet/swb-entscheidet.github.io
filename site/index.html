@@ -176,6 +176,13 @@
             text-decoration: underline
         }
 
+        /* Scrollspy: Menüpunkt des sichtbaren Abschnitts */
+        .nav a[aria-current],
+        .menu-nav a[aria-current] {
+            text-decoration: underline;
+            text-decoration-thickness: 2px
+        }
+
         .tools {
             display: flex;
             align-items: center;
@@ -1261,15 +1268,15 @@
                     aria-label="Schrift zurücksetzen" data-font="0" type="button">A</button><button
                     aria-label="Schrift vergrößern" data-font="1" type="button">A+</button><button aria-pressed="false"
                     id="contrast" data-contrast="" type="button">Kontrast</button></div>
-            <nav aria-label="Hauptnavigation" class="nav"><a href="#worum">Worum geht es?</a><a
+            <nav aria-label="Hauptnavigation" class="nav"><a href="aktueller-stand/">Aktueller Stand</a><a href="#worum">Worum geht es?</a><a
                     href="#frage">Fragestellung</a><a href="#begruendung">Begründung der Initiative</a><a
-                    href="#unterschreiben">Unterschreiben</a><a href="#faq">Fragen &amp; Antworten</a><a
-                    href="#quellen">Quellen</a><a href="#kontakt">Kontakt</a></nav>
+                    href="#unterschreiben">Unterschreiben</a><a
+                    href="#faq">Fragen &amp; Antworten</a><a href="#kontakt">Kontakt</a></nav>
             <!-- Mobil: schlanke Leiste mit aufklappbarem Menü, funktioniert ohne JS -->
             <details class="menu">
                 <summary><span aria-hidden="true">☰</span> Menü</summary>
                 <div class="menu-panel">
-                    <nav aria-label="Hauptnavigation" class="menu-nav"><a href="#worum">Worum geht es?</a><a
+                    <nav aria-label="Hauptnavigation" class="menu-nav"><a href="aktueller-stand/">Aktueller Stand</a><a href="#worum">Worum geht es?</a><a
                             href="#frage">Fragestellung</a><a href="#begruendung">Begründung der Initiative</a><a
                             href="#infostaende">Infostände</a><a href="#unterschreiben">Unterschreiben</a><a
                             href="#presse">Presse</a><a href="#faq">Fragen &amp; Antworten</a><a href="#quellen">Quellen</a><a
@@ -1291,7 +1298,8 @@
                 <p>Am <strong>29.&nbsp;Oktober&nbsp;2026</strong> haben wir dem Bürgermeister vor der Sitzung des
                     Haupt- und Finanzausschusses im Bürgerhaus die Unterschriften übergeben.</p>
                 <p class="banner-invite">Danke für Ihre Unterstützung <span aria-hidden="true">♥️</span></p>
-                <p class="banner-link"><a href="#presse">Was die Presse berichtet →</a></p>
+                <p class="banner-link"><a href="aktueller-stand/">Wie es jetzt weitergeht →</a> · <a href="#presse">Was die
+                        Presse berichtet →</a></p>
             </div>
         </aside>
         <section class="hero" id="start">
@@ -1745,6 +1753,8 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
             activeControls.hidden = true;
         });
     })();</script>
+    <!-- Scrollspy: markiert den Menüpunkt des Abschnitts, in dem man gerade ist; ohne JS bleibt das Menü unmarkiert -->
+    <script>(function () {const links = [...document.querySelectorAll('.nav a[href^="#"], .menu-nav a[href^="#"]')]; const ids = [...new Set(links.map(a => a.getAttribute('href').slice(1)))]; const secs = ids.map(i => document.getElementById(i)).filter(Boolean).sort((x, y) => x.compareDocumentPosition(y) & 4 ? -1 : 1); const h = document.querySelector('header'); let tick = false; function update() {tick = false; const y = (h ? h.offsetHeight : 0) + 40; let cur = ''; secs.forEach(s => {if (!s.hidden && s.getBoundingClientRect().top <= y) cur = s.id}); if (cur && innerHeight + scrollY >= document.documentElement.scrollHeight - 2) {const vis = secs.filter(s => !s.hidden); cur = vis[vis.length - 1].id} links.forEach(a => {if (cur && a.getAttribute('href') === '#' + cur) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current')})} addEventListener('scroll', () => {if (!tick) {tick = true; requestAnimationFrame(update)}}, {passive: true}); addEventListener('resize', update); update()})();</script>
 </body>
 
 </html>
