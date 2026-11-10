@@ -293,6 +293,70 @@
             filter: brightness(1.1)
         }
 
+        /* Hinweis „Wir sammeln weiter“: ohne JS Kasten im Fluss, mit JS modaler Dialog */
+        .weiter {
+            max-width: 40rem;
+            width: calc(100% - 38px);
+            padding: 28px 30px;
+            border: 1px solid var(--line);
+            border-top: 6px solid #ffd84d;
+            border-radius: 12px;
+            background: #fff;
+            color: var(--ink);
+            box-shadow: 0 18px 50px #16273540
+        }
+
+        .weiter:not(:modal) {
+            position: static;
+            margin: 24px auto;
+            box-shadow: none
+        }
+
+        /* mit JS kein Aufblitzen des Kastens vor dem Öffnen als Dialog */
+        .js .weiter:not(:modal) {
+            display: none
+        }
+
+        .weiter::backdrop {
+            background: #162735a6
+        }
+
+        .weiter h2 {
+            font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+            margin: 0 0 .6em
+        }
+
+        .weiter-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px
+        }
+
+        .weiter-actions button {
+            cursor: pointer;
+            font: inherit;
+            font-weight: 750
+        }
+
+        .weiter h2:focus {
+            outline: none
+        }
+
+        @media(max-width:620px) {
+            .weiter {
+                padding: 22px 19px
+            }
+
+            .weiter-actions .btn {
+                width: 100%
+            }
+        }
+
+        .contrast .weiter {
+            border: 3px solid #000
+        }
+
         /* Aktuelle Ankündigung oberhalb des Heros */
         .banner {
             background: #ffd84d;
@@ -1255,6 +1319,7 @@
             }
         }
     </style>
+    <script>document.documentElement.classList.add('js')</script>
 </head>
 
 <body><a class="skip" href="#inhalt">Zum Inhalt springen</a>
@@ -1298,10 +1363,24 @@
                 <p>Am <strong>29.&nbsp;Oktober&nbsp;2026</strong> haben wir dem Bürgermeister vor der Sitzung des
                     Haupt- und Finanzausschusses im Bürgerhaus die Unterschriften übergeben.</p>
                 <p class="banner-invite">Danke für Ihre Unterstützung <span aria-hidden="true">♥️</span></p>
-                <p class="banner-link"><a href="aktueller-stand/">Wie es jetzt weitergeht →</a> · <a href="#presse">Was die
+                <p class="banner-link"><a href="#weiter-sammeln">Wir sammeln weiter →</a> · <a
+                        href="aktueller-stand/">Wie es jetzt weitergeht →</a> · <a href="#presse">Was die
                         Presse berichtet →</a></p>
             </div>
         </aside>
+        <!-- Ohne JS ein offener Kasten im Seitenfluss; mit JS einmal pro Sitzung als modaler Dialog -->
+        <dialog class="weiter" id="weiter-sammeln" open aria-labelledby="weiter-title">
+            <h2 id="weiter-title" tabindex="-1" autofocus>Unterschriften sind weiterhin ausdrücklich willkommen</h2>
+            <p>Auch wenn die Übergabe bereits erfolgt ist, geht die Unterschriftensammlung weiter. Die Initiatoren
+                bitten daher alle Schwalbacherinnen und Schwalbacher, die das Bürgerbegehren unterstützen möchten und
+                bislang noch nicht unterschrieben haben, sich weiterhin zu beteiligen.</p>
+            <p>Die Unterschriftenlisten können über die Website heruntergeladen, ausgedruckt und ausgefüllt bei den
+                Vertrauenspersonen abgegeben werden. Darüber hinaus werden auch künftig punktuell Infostände
+                stattfinden, an denen sich Interessierte informieren und direkt unterschreiben können. Die jeweiligen
+                Termine werden ebenfalls auf der Website bekannt gegeben.</p>
+            <form method="dialog" class="weiter-actions"><a class="btn" href="#unterschreiben">Zu den
+                    Unterschriftenformularen →</a><button class="btn secondary" type="submit">Schließen</button></form>
+        </dialog>
         <section class="hero" id="start">
             <div class="wrap">
                 <p class="eyebrow">Bürgerbegehren in Schwalbach am Taunus</p>
@@ -1755,6 +1834,8 @@ Verdienstausfall und Fahrtkosten anfallen.</p>
     })();</script>
     <!-- Scrollspy: markiert den Menüpunkt des Abschnitts, in dem man gerade ist; ohne JS bleibt das Menü unmarkiert -->
     <script>(function () {const links = [...document.querySelectorAll('.nav a[href^="#"], .menu-nav a[href^="#"]')]; const ids = [...new Set(links.map(a => a.getAttribute('href').slice(1)))]; const secs = ids.map(i => document.getElementById(i)).filter(Boolean).sort((x, y) => x.compareDocumentPosition(y) & 4 ? -1 : 1); const h = document.querySelector('header'); let tick = false; function update() {tick = false; const y = (h ? h.offsetHeight : 0) + 40; let cur = ''; secs.forEach(s => {if (!s.hidden && s.getBoundingClientRect().top <= y) cur = s.id}); if (cur && innerHeight + scrollY >= document.documentElement.scrollHeight - 2) {const vis = secs.filter(s => !s.hidden); cur = vis[vis.length - 1].id} links.forEach(a => {if (cur && a.getAttribute('href') === '#' + cur) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current')})} addEventListener('scroll', () => {if (!tick) {tick = true; requestAnimationFrame(update)}}, {passive: true}); addEventListener('resize', update); update()})();</script>
+    <!-- Hinweis „Wir sammeln weiter“: einmal pro Sitzung als Dialog, per Banner-Link jederzeit -->
+    <script>(function () {const d = document.getElementById('weiter-sammeln'); if (!d || !d.showModal) return; const k = 'swb-weiter-gesehen'; const zeig = () => {if (d.open) d.close(); d.showModal()}; let gesehen = false; try {gesehen = sessionStorage.getItem(k) === '1'} catch (e) {} d.close(); if (!gesehen) zeig(); d.addEventListener('close', () => {try {sessionStorage.setItem(k, '1')} catch (e) {}}); d.addEventListener('click', e => {const r = d.getBoundingClientRect(); if (e.target === d && (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom)) d.close()}); d.querySelector('a[href="#unterschreiben"]').addEventListener('click', () => d.close()); document.querySelectorAll('a[href="#weiter-sammeln"]').forEach(a => a.addEventListener('click', e => {e.preventDefault(); zeig()}))})();</script>
 </body>
 
 </html>
